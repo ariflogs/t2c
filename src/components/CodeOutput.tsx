@@ -1,4 +1,4 @@
-export const CodeOutput = ({ output }: { output: string[] }) => {
+export const CodeOutput = ({ output }: { output: unknown[] }) => {
   const outputString = output.join("\n");
 
   return (

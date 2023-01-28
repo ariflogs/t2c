@@ -14,14 +14,14 @@ const Home: NextPage = () => {
   const [code, setCode] = useState<string>(
     `function add(a, b) {\n  return a + b;\n}\nconsole.log(add(2, 2))`
   );
-  const [output, setOutput] = useState<any[]>([]);
+  const [output, setOutput] = useState<unknown[]>([]);
   const [fileUrl, setFileUrl] = useState("");
   const [loading, setLoading] = useState(false);
 
   const runCode = () => {
     const originalLog = console.log;
 
-    const response: any[] = [];
+    const response: unknown[] = [];
     console.log = function (...value) {
       originalLog.apply(console, value);
       response.push(...value);
@@ -40,7 +40,7 @@ const Home: NextPage = () => {
       await worker.initialize("eng");
       const { data } = await worker.recognize(fileUrl);
       if (typeof data.text === "string") {
-        setCode(data.text as string);
+        setCode(data.text);
       }
     } catch (error) {
       console.log(error);

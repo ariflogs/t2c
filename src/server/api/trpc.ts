@@ -16,7 +16,6 @@
  * processing a request
  *
  */
-import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 
 /**
  * Replace this with an object if you want to pass things to createContextInner
@@ -33,7 +32,7 @@ type CreateContextOptions = Record<string, never>;
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
 const createInnerTRPCContext = (_opts: CreateContextOptions) => {
-  return {};
+  return _opts;
 };
 
 /**
@@ -41,7 +40,7 @@ const createInnerTRPCContext = (_opts: CreateContextOptions) => {
  * process every request that goes through your tRPC endpoint
  * @see https://trpc.io/docs/context
  */
-export const createTRPCContext = (_opts: CreateNextContextOptions) => {
+export const createTRPCContext = () => {
   return createInnerTRPCContext({});
 };
 
